@@ -2,8 +2,8 @@ package main
 
 import (
 	"chatRocketMQ/wrapper"
+
 	"fmt"
-	"time"
 )
 
 func main() {
@@ -11,12 +11,11 @@ func main() {
 
 	rMsg := make(chan string, 100)
 
-	wrapper.ReceiveMsg(rMsg)
-	wrapper.SendMsg("new hello")
+	go wrapper.ReceiveMsg(rMsg)
 
-	fmt.Println("hiiii555555" + <-rMsg)
+	go wrapper.SendMsg("new hello555555")
 
-	time.Sleep(time.Hour)
+	fmt.Println(<-rMsg)
 
 	// for {
 	// 	fmt.Println("enter message:")
