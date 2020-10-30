@@ -15,7 +15,7 @@ import (
 func SendMsg(Pmsg string) {
 
 	p, _ := rocketmq.NewProducer(
-		producer.WithGroupName("firstTestGroup"),
+		producer.WithGroupName("new2TestGroup"),
 		producer.WithNsResovler(primitive.NewPassthroughResolver([]string{"127.0.0.1:9876"})),
 		producer.WithRetry(2),
 	)
@@ -25,7 +25,7 @@ func SendMsg(Pmsg string) {
 		os.Exit(1)
 	}
 
-	topic := "SelfTest2P"
+	topic := "SelfTest3P"
 	msg := &primitive.Message{
 		Topic: topic,
 		Body:  []byte(Pmsg),

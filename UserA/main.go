@@ -10,13 +10,14 @@ func main() {
 	// pMsg := ""
 
 	rMsg := make(chan string, 100)
-
+	var newMsg string
 	go wrapper.ReceiveMsg(rMsg)
 
-	go wrapper.SendMsg("new hello555555")
+	fmt.Println("enter new msg:")
+	fmt.Scanln(&newMsg)
 
+	go wrapper.SendMsg(newMsg)
 	fmt.Println(<-rMsg)
-
 	// for {
 	// 	fmt.Println("enter message:")
 	// 	fmt.Scan(&pMsg)
